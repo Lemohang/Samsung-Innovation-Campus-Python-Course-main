@@ -1,7 +1,7 @@
 from Employee import Employee
 class Manager(Employee):
-    def __init__(self, id, name, dept_id, address, no_of_subordinates,performance_bonus):
-           super().__init__(name, id,name, dept_id, address)
+    def __init__(self, id, name, dept_id, basic_salary, address, no_of_subordinates,performance_bonus):
+           super().__init__(self, id, name, dept_id,basic_salary, address)
            self.no_of_subordinates = no_of_subordinates
            self.performance_bonus = performance_bonus
 
@@ -19,4 +19,4 @@ class Manager(Employee):
 
     
     def __str__(self): 
-        return "Manager: {}, ID: {}, Salary: {:.2f}, Department: {}, Subordinates: {}, Bonus: {:.2f}".format(super().__str__(),self.name, self.id, self.salary, self.department, self.no_of_subordinates, self.performance_bonus)
+        return "Manager: {}, ID: {}, Salary: {:.2f}, Department: {}, Subordinates: {}, Bonus: {:.2f}".format(super().__str__(),self.name, self.id,self.basic_salary, self.no_of_subordinates, self.performance_bonus)

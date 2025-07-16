@@ -1,3 +1,4 @@
+from Employee import Employee
 class Worker(Employee):
     def __init__(self, id, name, dept_id, address, no_of_hours_worked, hourly_rate):
         super().__init__(id, name, dept_id, address)
