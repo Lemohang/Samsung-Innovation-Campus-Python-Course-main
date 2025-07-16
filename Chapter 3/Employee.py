@@ -39,12 +39,11 @@ class Employee:
         return self.basic_salary
 
     def calculate_salary(self):
-        return self.basic * 1.5
+        return self.basic_salary * 1.5
 
     def __str__(self):
         return 'ID: {}, Name: {}, Dept ID: {}, Basic: {:.2f}, Address: {}'.format(
             self.id, self.name, self.dept_id, self.basic_salary, self.address
         )
 
-    def display(self):
-        print(self.__str__())
+    
