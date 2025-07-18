@@ -1,7 +1,8 @@
 from Employee import Employee
+
 class Worker(Employee):
     def __init__(self, id, name, dept_id, address, no_of_hours_worked, hourly_rate):
-        super().__init__(id, name, dept_id, address)
+        super().__init__(id, name, dept_id, 0.0, address)
         self.no_of_hours_worked = no_of_hours_worked
         self.hourly_rate = hourly_rate
 
@@ -21,4 +22,4 @@ class Worker(Employee):
         return self.no_of_hours_worked * self.hourly_rate
 
     def __str__(self):
-        return f"Worker: {self.name}, ID: {self.id}, Salary: {self.calculate_salary()}, Department: {self.department}"  
+        return f"Worker: {self.name}, ID: {self.id}, Salary: {self.calculate_salary():.2f}, Department: {self.dept_id}"

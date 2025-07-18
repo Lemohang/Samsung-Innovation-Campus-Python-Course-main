@@ -2,38 +2,22 @@ from address import Address
 from Employee import Employee
 from Manager import Manager
 from Worker import Worker
-from PieceWorker import Pieceworker 
-
-def register_employee():
-    print("=== Employee Registration ===")
-    emp_id = int(input("Enter employee ID: "))
-    name = input("Enter employee name: ")
-    dept_id = int(input("Enter department ID: "))
-    basic_salary = float(input("Enter basic salary: "))
-    country = input("Enter country: ")
-    city = input("Enter city: ")
-    zip_code = input("Enter zip code: ")
-    emp_address = Address(country, city, zip_code)
-    emp = Employee(emp_id, name, dept_id, basic_salary, emp_address)
-    print("\n=== Employee Details ===")
-    emp.display()
-    print("Calculated Salary: {:.2f}".format(emp.calculate_salary()))
+from PieceWorker import Pieceworker
 
 def register_manager():
     print("=== Manager Registration ===")
     manager_id = int(input("Enter manager ID: "))
     manager_name = input("Enter manager name: ")
     manager_dept_id = int(input("Enter department ID: "))
+    basic_salary = float(input("Enter basic salary: "))
     country = input("Enter country: ")
     city = input("Enter city: ")
     zip_code = input("Enter zip code: ")
     no_of_subordinates = int(input("Enter number of subordinates: "))
     performance_bonus = float(input("Enter performance bonus: "))
     manager_address = Address(country, city, zip_code)
-    manager = Manager(manager_id, manager_name, manager_dept_id, manager_address, no_of_subordinates, performance_bonus)
-    print("\n=== Manager Details ===")
-    print(manager)
-    print("Calculated Salary: {:.2f}".format(manager.calculate_salary()))
+    return Manager(manager_id, manager_name, manager_dept_id, basic_salary,
+                   manager_address, no_of_subordinates, performance_bonus)
 
 def register_worker():
     print("=== Hourly Worker Registration ===")
@@ -46,10 +30,8 @@ def register_worker():
     no_of_hours_worked = int(input("Enter number of hours worked: "))
     hourly_rate = float(input("Enter hourly rate: "))
     worker_address = Address(country, city, zip_code)
-    worker = Worker(worker_id, worker_name, worker_dept_id, worker_address, no_of_hours_worked, hourly_rate)
-    print("\n=== Worker Details ===")
-    print(worker)
-    print("Calculated Salary: {:.2f}".format(worker.calculate_salary()))
+    return Worker(worker_id, worker_name, worker_dept_id, worker_address,
+                  no_of_hours_worked, hourly_rate)
 
 def register_pieceworker():
     print("=== Piece Worker Registration ===")
@@ -62,30 +44,65 @@ def register_pieceworker():
     no_of_pieces_produced = int(input("Enter number of pieces produced: "))
     rate_per_piece = float(input("Enter rate per piece: "))
     piece_address = Address(country, city, zip_code)
-    pieceworker = Pieceworker(piece_id, piece_name, piece_dept_id, piece_address, no_of_pieces_produced, rate_per_piece)
-    print("\n=== Piece Worker Details ===")
-    print(pieceworker)
-    print("Calculated Salary: {:.2f}".format(pieceworker.calculate_salary()))
+    return Pieceworker(piece_id, piece_name, piece_dept_id, piece_address,
+                       no_of_pieces_produced, rate_per_piece)
+
+def display_employee(employee: Employee):
+    print("\n--- Employee Details ---")
+    print(employee)
+    print("Calculated Salary: {:.2f}".format(employee.calculate_salary()))
+
+def get_employee_data(emp):
+    return {
+        "Name": emp.get_name(),
+        "Type": emp.__class__.__name__,
+        "Department ID": emp.get_dept_id(),
+        "Address": str(emp.get_address()),
+        "Salary": "{:.2f}".format(emp.calculate_salary())
+    }
 
 def main():
-    print("Welcome to the Employee Management System")
-    sentinel = input("Enter yes/no to continue: ")
-    while sentinel.lower() == 'yes':
-        print("For Manager       enter 1:")
-        print("For Hourly Worker enter 2:")
-        print("For Piece Worker  enter 3:")
-        choice = input("Enter your choice: ")
-        
-        match choice:
-            case '1':
-                register_manager()
-            case '2':
-                register_worker()
-            case '3':
-                register_pieceworker()
-            case _:
-                print("Invalid choice. Exiting.")
-    
+    print("==== Welcome To Employee Management System ====")
+    employees = {}
+
+    while True:
+        sentinel = input("\nWould you like to register an employee? (yes/no): ").lower()
+        if sentinel == "no":
+            break
+
+        print("\nSelect employee type:")
+        print("1. Manager")
+        print("2. Hourly Worker")
+        print("3. Piece Worker")
+        choice = input("Enter Your Choice (1-3): ")
+
+        employee = None
+
+        if choice == "1":
+            employee = register_manager()
+        elif choice == "2":
+            employee = register_worker()
+        elif choice == "3":
+            employee = register_pieceworker()
+        else:
+            print("Invalid choice.")
+            continue
+
+        emp_id = employee.get_id()
+        if emp_id in employees:
+            print("Employee with ID {} already exists. Overwriting.".format(emp_id))
+        employees[emp_id] = employee
+        display_employee(employee)
+
+    print("\n==== All Registered Employees (Dictionary Format) ====")
+    if not employees:
+        print("No employees registered.")
+    else:
+        employee_dict_output = {}
+        for emp_id, emp in employees.items():
+            employee_dict_output[emp_id] = get_employee_data(emp)
+
+        print(employee_dict_output)
 
 if __name__ == "__main__":
     main()
