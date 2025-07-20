@@ -1,7 +1,8 @@
 from Vehicle import Vehicle
+
 class Rental(Vehicle):
-    def __init__(self, vehicle_number, make, model, price, number_of_days, rate_per_day):
-        super().__init__(vehicle_number, make, model, price, 0)  
+    def __init__(self, license_number, vehicle_name, make, model, price, year, number_of_days, rate_per_day):
+        super().__init__(license_number, vehicle_name, make, model, price, year)
         self.number_of_days = number_of_days
         self.rate_per_day = rate_per_day
     
@@ -25,4 +26,4 @@ class Rental(Vehicle):
                "Number of Days: {}, Rate per Day: ${:.2f}, Total Rental Price: ${:.2f}".format(
             self.license_number, self.vehicle_name, self.price, 
             self.number_of_days, self.rate_per_day, self.calculate_rental_price()
-        ) 
+        )

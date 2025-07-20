@@ -16,14 +16,15 @@ def main():
 
     print("\nVehicle Details:")
     print(vehicle)
-
+    
     print("\n===== Rental Vehicle =====")
-    number_of_days = int(input("\nEnter number of days for rental: "))  
+    number_of_days = int(input("Enter number of days for rental: "))  
     rate_per_day = float(input("Enter rate per day: "))
-    rental_vehicle = Rental(license_number, make, model, price, number_of_days, rate_per_day)   
+    rental_vehicle = Rental(license_number, vehicle_name, make, model, price, year, number_of_days, rate_per_day)   
     print("\nRental Vehicle Details:")
     print(rental_vehicle)
     print("Total Rental Price: ${:.2f}".format(rental_vehicle.calculate_rental_price()))
+
 
     print("\n===== Sale Vehicle =====")
     depreciation_rate = float(input("\nEnter depreciation rate (%): "))
@@ -33,14 +34,15 @@ def main():
     print(sale_vehicle)
     print("Depreciation Amount: ${:.2f}".format(sale_vehicle.calculate_depreciation()))
     print("Selling Price: ${:.2f}".format(sale_vehicle.get_selling_price()))
-
+    
     print("\n===== Bus Vehicle =====")
-    driver_cost = float(input("\nEnter driver cost: "))
-    bus_vehicle = Bus(license_number, make, model, price, number_of_days, rate_per_day, driver_cost)
+    driver_cost = float(input("Enter driver cost: "))
+    bus_vehicle = Bus(license_number, vehicle_name, make, model, price, year, number_of_days, rate_per_day, driver_cost)
     print("\nBus Vehicle Details:")
     print(bus_vehicle)
-    print("Total Rental Price with Driver Cost: ${:.2f}".format(bus_vehicle.calculate_rental_price() + bus_vehicle.get_driver_cost()))
-    
+    print("Total Rental Price with Driver Cost: ${:.2f}".format(
+        bus_vehicle.calculate_rental_price() + bus_vehicle.get_driver_cost()))
+ 
 if __name__ == "__main__":
     main()
 
