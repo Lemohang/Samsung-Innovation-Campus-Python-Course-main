@@ -35,5 +35,6 @@ class Student:
     
     def get_avg_score(self):
         return (sum(self.eng_quiz) + sum(self.math_quiz) + sum(self.science_quiz)) / 3
+    
     def __str__(self):
         return "Name: {}, Student ID: {}, English Quiz: {}, Math Quiz: {}, Science Quiz: {}".format(self.name, self.student_id, self.eng_quiz, self.math_quiz, self.science_quiz)
