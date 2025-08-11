@@ -21,7 +21,7 @@ class Deque:
        
 queue = Deque()
 while True:
-    print("===== Deque Class ========")
+    print("===== Deque Class Implementation ========")
     print("1. Add First")
     print("2. Add Last")
     print("3. Remove First")

@@ -1,11 +1,11 @@
-def word_count(S, x):
-    return S.count(x)
+def word_count(S, search):
+    return S.count(search)
 
 def main():
     S = list(input("Input a sentence: ").split())
-    x = input("Input a word to search for: ")
-    count = word_count(S, x)
-    print("In the sentence, the word '{}' appears {} times.".format(x, count))
+    search = input("Input a word to search for: ")
+    count = word_count(S, search)
+    print("In the sentence, the word '{}' appears {} times.".format(search, count))
     return count
 
 word = main()
