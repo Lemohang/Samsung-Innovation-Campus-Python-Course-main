@@ -30,7 +30,6 @@ if match_checker(tags):
 else:
     print("Invalid input")
 
-# Print all tags found
 for tag in tags:
     print(tag, end=" ")
 
