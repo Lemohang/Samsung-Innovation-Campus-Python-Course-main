@@ -11,8 +11,10 @@ class Student:
 
     def set_student_id(self, student_id):
         self.student_id = student_id
+
     def set_eng_quiz(self, eng_quiz):
         self.eng_quiz = eng_quiz
+
     def set_math_quiz(self, math_quiz):
         self.math_quiz = math_quiz
 
@@ -21,12 +23,16 @@ class Student:
     
     def get_name(self):
         return self.name
+    
     def get_student_id(self):
         return self.student_id
+    
     def get_eng_quiz(self):
         return self.eng_quiz
+    
     def get_math_quiz(self):
         return self.get_math_quiz
+    
     def get_science_quiz(self):
         return self.science_quiz
     
