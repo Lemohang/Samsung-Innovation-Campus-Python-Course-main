@@ -12,10 +12,10 @@ def search_insert_position(nums, x):
     return left 
 
 def main():
-    nums = [10, 20, 40, 50, 60, 80]
+    nums = [10, 20, 40, 50, 60, 80, 100, 120, 150, 200, 300, 400, 500]
     x = int(input("Input a number to insert: "))
     pos = search_insert_position(nums, x)
-    print("{} should be inserted at position {}".format(x, pos))
+    print("{} should be inserted at index {}".format(x, pos + 1))
     nums.insert(pos, x)
     print(nums)
 

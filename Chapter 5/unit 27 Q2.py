@@ -8,6 +8,7 @@ def selection_sort(word):
         word_list[i], word_list[current_min] = word_list[current_min], word_list[i]
     return word_list
 
+
 def insertion_sort(word):
     chars = list(word.lower())
     for i in range(1, len(chars)):
