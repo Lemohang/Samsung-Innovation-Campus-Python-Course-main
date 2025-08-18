@@ -9,6 +9,7 @@ def selection_sort(word):
     return word_list
 
 
+
 def insertion_sort(word):
     chars = list(word.lower())
     for i in range(1, len(chars)):
