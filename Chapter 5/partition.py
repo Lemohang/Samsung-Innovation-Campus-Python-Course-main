@@ -2,7 +2,7 @@ def partition(arr, low, high):
     pivot = arr[high]
     i = low
     for j in range(low, high):
-        if arr[j] > pivot:  # For kth largest, use '>' for descending order
+        if arr[j] > pivot: 
             arr[i], arr[j] = arr[j], arr[i]
             i += 1
     arr[i], arr[high] = arr[high], arr[i]

@@ -14,7 +14,7 @@ def find_kth_largest_quicksort(numbers, k):
             print("Right side: {}".format(numbers[partition_index+1:high+1]))
             print("-" * 50)
 
-            # Recursive calls
+        
             quick_sort(numbers, low, partition_index - 1)
             quick_sort(numbers, partition_index + 1, high)
 

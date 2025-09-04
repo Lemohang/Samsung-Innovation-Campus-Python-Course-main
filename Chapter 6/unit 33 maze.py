@@ -1,4 +1,4 @@
-def is_safe(x, y, maze, visited):
+def is_promising(x, y, maze, visited):
     n = len(maze)
     return 0 <= x < n and 0 <= y < n and maze[x][y] == 0 and not visited[x][y]
 
@@ -6,13 +6,14 @@ def solve_maze(maze):
     n = len(maze)
     visited = [[False]*n for _ in range(n)]
     path = [[1]*n for _ in range(n)]  
+    
 
     def depth_first_search(x, y):
         if x == n-1 and y == n-1:  
             path[x][y] = 0
             return True
         
-        if is_safe(x, y, maze, visited):
+        if is_promising(x, y, maze, visited):
             visited[x][y] = True
             path[x][y] = 0
 
@@ -37,5 +38,6 @@ maze = [[0,0,0,0],
         [0,0,0,0]]
 
 solution = solve_maze(maze)
+print("Solution Path (0 = path, 1 = wall):")
 for row in solution:
     print(*row)
