@@ -57,6 +57,5 @@ board[0][1] = -1  # Mark missing square (row=0, col=1)
 
 tromino_tiling(board, n, 0, 0, 0, 1)
 
-# Print the board
 for row in board:
     print(row)
