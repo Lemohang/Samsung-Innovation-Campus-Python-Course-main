@@ -30,4 +30,4 @@ for i in range(N):
     print(nums)
     list_of_nums.append(nums)
 merged_sorted = multiway_merge(list_of_nums)
-print("Merged sorted:", set(merged_sorted))
+print("Merged sorted:", merged_sorted)
